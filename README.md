@@ -23,6 +23,17 @@ POST http://localhost:8080/job
 }
 ``` 
 
+# Top Choices
+## Quarkus
+- Seems the best supported of the choices we have.
+- Very full featured. Books on the subject.
+- Easy to get stood up and test. Would require very little in the way of tooling to support our project.
+## Javalin 
+- Bare bones. Very little to it but just enough to make it useful. Will require some tooling written by us.
+- Avaja has already written tooling we could use, or we could follow it to use another injection framework (guice, dagger, ?)
+## Micronaut
+- Works well, We already have gone through the pain of learning it.
+
 # FrameWorks
 ## ActiveJ
 - Not implemented, some test code

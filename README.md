@@ -60,6 +60,7 @@ POST http://localhost:8080/job
 - See Avaje
 - Looks like a fairly minimalistic rest framework. Bare bones, but looked like it was seeing some adoption and looked really straight forward.
 - If I were going ultra minimalistic I think I would choose this.
+- Only one obvious developer, but it is designed as minimalistic so maybe it doesn't need more?
 
 ## Jersey
 - Mostly Implemented. Most of the CRUD service is working, no tests.

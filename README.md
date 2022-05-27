@@ -7,6 +7,21 @@ The primary objective was to implement a CRUD REST application for the "JOB" obj
 - Testing
 
 Not all of the underlying directories work or are fully implemented. To run the partially implemented ones run `docker-compose up -d` and then see the given project readme.
+Most of the partially implemented can be tested by hitting the urls 
+```
+GET http://localhost:8080/job
+GET http://localhost:8080/job/1
+POST http://localhost:8080/job
+{
+    "id": 1,
+    "name": "CITI Job",
+    "vendorCode": "code",
+    "status": "ACTIVE",
+    "cron": "0 * * * * ?",
+    "cronHumanReadable": "every minute",
+    "contactEmails": ["abc@gmail.com"]
+}
+``` 
 
 # FrameWorks
 ## ActiveJ

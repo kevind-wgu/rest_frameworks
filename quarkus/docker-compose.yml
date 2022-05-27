@@ -1,0 +1,13 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    ports:
+      - "10001:5432"
+    volumes:
+      - ./docker-init-scripts/postgres:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=test1234
+      - POSTGRES_MULTIPLE_DATABASES=quarkus_app,quarkus_test,jersey_app,jersey_test,

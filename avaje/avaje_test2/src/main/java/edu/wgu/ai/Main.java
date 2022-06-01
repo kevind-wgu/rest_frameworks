@@ -5,7 +5,6 @@ import io.avaje.http.api.WebRoutes;
 import io.avaje.inject.BeanScope;
 import io.avaje.inject.InjectModule;
 import io.javalin.Javalin;
-import io.javalin.core.LoomUtil;
 import io.javalin.http.staticfiles.Location;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -26,7 +25,6 @@ public class Main {
 
     public static Javalin start(int port) {
 
-        LoomUtil.useLoomThreadPool = false;
         Javalin app = Javalin.create(config -> {
             config.showJavalinBanner = false;
             config.addStaticFiles("public", Location.CLASSPATH);

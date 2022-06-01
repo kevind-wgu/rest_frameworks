@@ -1,0 +1,159 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Example service",
+    "description" : "Example Javalin controllers with Java and Maven",
+    "version" : ""
+  },
+  "paths" : {
+    "/job" : {
+      "get" : {
+        "tags" : [ ],
+        "summary" : "",
+        "description" : "",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/JobSearch"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Job"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/job/{id}" : {
+      "get" : {
+        "tags" : [ ],
+        "summary" : "",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Job"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ ],
+        "summary" : "",
+        "description" : "",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Job"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "integer",
+                  "format" : "int32",
+                  "nullable" : false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Job" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "name" : {
+            "maxLength" : 200,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "vendorCode" : {
+            "maxLength" : 40,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/JobActivityStatus",
+            "nullable" : false
+          },
+          "cron" : {
+            "type" : "string"
+          },
+          "cronHumanReadable" : {
+            "type" : "string"
+          },
+          "contactEmails" : {
+            "type" : "array",
+            "format" : "email",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "createdDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updatedDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "JobActivityStatus" : {
+        "type" : "object"
+      },
+      "JobSearch" : {
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "$ref" : "#/components/schemas/JobActivityStatus"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,5 @@
 package edu.wgu.ai;
 
-//import edu.wgu.ai.testscope.MyCustomModule;
-import edu.wgu.ai.testscope.MyCustomModule;
 import io.avaje.http.api.*;
 import io.avaje.http.api.InvalidPathArgumentException;
 import io.avaje.http.api.InvalidTypeArgumentException;
@@ -77,7 +75,7 @@ public class Main {
 
         // All WebRoutes / Controllers ... from DI Context
         BeanScope beanScope = BeanScope.builder()
-                .modules(new MyCustomModule(), new io.avaje.http.hibernate.validator.BeanValidatorModule(), new edu.wgu.ai.AppModule())
+//                .modules(new MyCustomModule(), new io.avaje.http.hibernate.validator.BeanValidatorModule(), new edu.wgu.ai.AppModule())
                 .build();
         List<WebRoutes> webRoutes = beanScope.list(WebRoutes.class);
         app.routes(() -> webRoutes.forEach(WebRoutes::registerRoutes));

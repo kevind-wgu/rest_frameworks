@@ -7,10 +7,10 @@ import com.google.inject.servlet.ServletModule;
 import edu.wgu.ai.model.Job;
 import edu.wgu.ai.model.JobActivityStatus;
 import edu.wgu.ai.model.JobSearch;
+import edu.wgu.ai.service.JavalinCtxModule;
 import edu.wgu.ai.service.impl.JobController;
 import edu.wgu.ai.service.impl.JobModule;
 import io.javalin.Javalin;
-import io.javalin.core.validation.Validator;
 import io.javalin.http.staticfiles.Location;
 import org.eclipse.jetty.server.Server;
 import org.slf4j.Logger;
@@ -30,7 +30,8 @@ public class Main {
     public static Javalin start(int port) {
         Injector injector = Guice.createInjector(
                 new ServletModule(),
-                new JobModule()
+                new JobModule(),
+                new JavalinCtxModule()
         );
 
         Javalin app = Javalin.create(config -> {
@@ -44,7 +45,9 @@ public class Main {
                 handler.addFilter(GuiceFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
             });
         });
-        Server server = app.jettyServer().server();
+
+        app.before(JavalinCtxModule::setup);
+        app.after(JavalinCtxModule::teardown);
         app.get("/job", ctx -> {
             String status = ctx.queryParam("status");
             JobActivityStatus activityStatus = status != null ? JobActivityStatus.valueOf(status) : null;

@@ -1,0 +1,9 @@
+micronaut:
+  application:
+    name: helloWorld
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+hellotype: "KDodge Micronaut"

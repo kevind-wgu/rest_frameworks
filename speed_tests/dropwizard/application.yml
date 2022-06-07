@@ -1,1 +1,5 @@
 hellotype: Dropwizard
+
+server:
+  requestLog:
+    appenders: []

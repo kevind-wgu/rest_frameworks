@@ -1,4 +1,4 @@
-# ttfr
+# ttfr - Time to first request
 
 How to start the ttfr application
 ---
